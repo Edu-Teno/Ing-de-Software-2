@@ -1,0 +1,207 @@
+package com.example.alumno.gato;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class Gato extends AppCompatActivity implements View.OnClickListener{
+
+    Button bt_b1,bt_b2,bt_b3,bt_b4,bt_b5,bt_b6,bt_b7,bt_b8,bt_b9,bt_b10;
+    EditText et_ganador;
+    int turno,cont,conta=0;
+    String letra;
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_gato);
+
+        et_ganador=(EditText) findViewById(R.id.et_ganador);
+        bt_b1=(Button) findViewById(R.id.bt_b1);
+        bt_b2=(Button) findViewById(R.id.bt_b2);
+        bt_b3=(Button) findViewById(R.id.bt_b3);
+        bt_b4=(Button) findViewById(R.id.bt_b4);
+        bt_b5=(Button) findViewById(R.id.bt_b5);
+        bt_b6=(Button) findViewById(R.id.bt_b6);
+        bt_b7=(Button) findViewById(R.id.bt_b7);
+        bt_b8=(Button) findViewById(R.id.bt_b8);
+        bt_b9=(Button) findViewById(R.id.bt_b9);
+        bt_b10=(Button) findViewById(R.id.bt_b10);
+
+        bt_b1.setOnClickListener(this);
+        bt_b2.setOnClickListener(this);
+        bt_b3.setOnClickListener(this);
+        bt_b4.setOnClickListener(this);
+        bt_b5.setOnClickListener(this);
+        bt_b6.setOnClickListener(this);
+        bt_b7.setOnClickListener(this);
+        bt_b8.setOnClickListener(this);
+        bt_b9.setOnClickListener(this);
+        bt_b10.setOnClickListener(this);
+    }
+
+
+    public void onClick(View v) {
+
+        cont++;
+        turno=cont%2;
+
+        if(turno==1){  //j1
+          imprimirLetraXO('x',v);
+        }
+        else{ //j2
+            imprimirLetraXO('o',v);
+            }
+        }
+
+    public void imprimirLetraXO(char letra, View v){
+
+        if(v.getId()== R.id.bt_b1){
+            bt_b1.setText(letra+"");
+            bt_b1.setEnabled(false);
+        }
+        else if(v.getId()== R.id.bt_b2){
+            bt_b2.setText(letra+"");
+            bt_b2.setEnabled(false); //desabilitar boton
+        }
+        else if(v.getId()== R.id.bt_b3){
+            bt_b3.setText(letra+"");
+            bt_b3.setEnabled(false);
+        }else if(v.getId()== R.id.bt_b4){
+            bt_b4.setText(letra+"");
+            bt_b4.setEnabled(false);
+        }else if(v.getId()== R.id.bt_b5){
+            bt_b5.setText(letra+"");
+            bt_b5.setEnabled(false);
+        }else if(v.getId()== R.id.bt_b6){
+            bt_b6.setText(letra+"");
+            bt_b6.setEnabled(false);
+        }else if(v.getId()== R.id.bt_b7){
+            bt_b7.setText(letra+"");
+            bt_b7.setEnabled(false);
+        }else if(v.getId()== R.id.bt_b8){
+            bt_b8.setText(letra+"");
+            bt_b8.setEnabled(false);
+        }else if(v.getId()== R.id.bt_b9){
+            bt_b9.setText(letra+"");
+            bt_b9.setEnabled(false);
+            }
+        else if(v.getId()== R.id.bt_b10){
+            reiniciar();
+        }
+          ganador(letra);
+        }//fin metodo
+
+    public void ganador(char letra){
+
+    if(bt_b1.getText().toString().equals(letra+"") && (bt_b2.getText().toString().equals(letra+"")) && (bt_b3.getText().toString().equals(letra+""))){
+       et_ganador.setText("El ganador es "+letra);
+        bt_b4.setEnabled(false);
+        bt_b5.setEnabled(false);
+        bt_b6.setEnabled(false);
+        bt_b7.setEnabled(false);
+        bt_b8.setEnabled(false);
+        bt_b9.setEnabled(false);
+
+    }else if(bt_b4.getText().toString().equals(letra+"") && (bt_b5.getText().toString().equals(letra+"")) && (bt_b6.getText().toString().equals(letra+""))){
+        et_ganador.setText("El ganador es "+letra);
+        bt_b1.setEnabled(false);
+        bt_b2.setEnabled(false);
+        bt_b3.setEnabled(false);
+        bt_b7.setEnabled(false);
+        bt_b8.setEnabled(false);
+        bt_b9.setEnabled(false);
+
+    }else if(bt_b7.getText().toString().equals(letra+"") && (bt_b8.getText().toString().equals(letra+"")) && (bt_b9.getText().toString().equals(letra+""))){
+        et_ganador.setText("El ganador es "+letra);
+        bt_b1.setEnabled(false);
+        bt_b2.setEnabled(false);
+        bt_b3.setEnabled(false);
+        bt_b4.setEnabled(false);
+        bt_b5.setEnabled(false);
+        bt_b6.setEnabled(false);
+
+    }else if(bt_b1.getText().toString().equals(letra+"") && (bt_b4.getText().toString().equals(letra+"")) && (bt_b7.getText().toString().equals(letra+""))){
+        et_ganador.setText("El ganador es "+letra);
+        bt_b2.setEnabled(false);
+        bt_b3.setEnabled(false);
+        bt_b5.setEnabled(false);
+        bt_b6.setEnabled(false);
+        bt_b8.setEnabled(false);
+        bt_b9.setEnabled(false);
+
+    }else if(bt_b2.getText().toString().equals(letra+"") && (bt_b5.getText().toString().equals(letra+"")) && (bt_b8.getText().toString().equals(letra+""))){
+        et_ganador.setText("El ganador es "+letra);
+        bt_b1.setEnabled(false);
+        bt_b3.setEnabled(false);
+        bt_b4.setEnabled(false);
+        bt_b6.setEnabled(false);
+        bt_b7.setEnabled(false);
+        bt_b9.setEnabled(false);
+
+    }else if(bt_b3.getText().toString().equals(letra+"") && (bt_b6.getText().toString().equals(letra+"")) && (bt_b9.getText().toString().equals(letra+""))){
+        et_ganador.setText("El ganador es "+letra);
+        bt_b1.setEnabled(false);
+        bt_b2.setEnabled(false);
+        bt_b4.setEnabled(false);
+        bt_b5.setEnabled(false);
+        bt_b7.setEnabled(false);
+        bt_b8.setEnabled(false);
+
+    }else if(bt_b1.getText().toString().equals(letra+"") && (bt_b5.getText().toString().equals(letra+"")) && (bt_b9.getText().toString().equals(letra+""))){
+        et_ganador.setText("El ganador es "+letra);
+        bt_b2.setEnabled(false);
+        bt_b3.setEnabled(false);
+        bt_b4.setEnabled(false);
+        bt_b6.setEnabled(false);
+        bt_b7.setEnabled(false);
+        bt_b8.setEnabled(false);
+
+    }else if(bt_b3.getText().toString().equals(letra+"") && (bt_b5.getText().toString().equals(letra+"")) && (bt_b7.getText().toString().equals(letra+""))){
+        et_ganador.setText("El ganador es "+letra);
+        bt_b1.setEnabled(false);
+        bt_b2.setEnabled(false);
+        bt_b4.setEnabled(false);
+        bt_b6.setEnabled(false);
+        bt_b8.setEnabled(false);
+        bt_b9.setEnabled(false);
+
+    }else if(conta<9){
+        conta++;
+    }else {
+        et_ganador.setText("Empate");
+    }
+    //else if(bt_b1.isEnabled()==false && (bt_b4.isEnabled()==false) && (bt_b7.isEnabled()==false) && (bt_b8.isEnabled()==false) && (bt_b9.isEnabled()==false) && (bt_b5.isEnabled()==false) && (bt_b2.isEnabled()==false) && (bt_b3.isEnabled()==false) && (bt_b6.isEnabled()==false) ){
+      //  et_ganador.setText("Empate");
+        //}
+    }//fin de metodo
+
+    public void reiniciar(){
+       conta=0;
+       cont=0;
+        et_ganador.setText("          ");
+        bt_b1.setEnabled(true);
+        bt_b2.setEnabled(true);
+        bt_b3.setEnabled(true);
+        bt_b4.setEnabled(true);
+        bt_b5.setEnabled(true);
+        bt_b6.setEnabled(true);
+        bt_b7.setEnabled(true);
+        bt_b8.setEnabled(true);
+        bt_b9.setEnabled(true);
+        bt_b1.setText(" ");
+        bt_b2.setText(" ");
+        bt_b3.setText(" ");
+        bt_b4.setText(" ");
+        bt_b5.setText(" ");
+        bt_b6.setText(" ");
+        bt_b7.setText(" ");
+        bt_b8.setText(" ");
+        bt_b9.setText(" ");
+
+        }
+
+
+    }
+
